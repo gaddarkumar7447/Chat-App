@@ -7,6 +7,7 @@ import com.example.chatapp.R
 class LogIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_log_in)
     }
 }

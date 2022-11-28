@@ -221,6 +221,14 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <Button
+            android:layout_width="150dp"
+            android:layout_marginTop="10dp"
+            android:text="SignUp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_back"
+            android:layout_height="wrap_content"/>
+
     </LinearLayout>
 
 </RelativeLayout>
