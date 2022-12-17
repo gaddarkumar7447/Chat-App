@@ -23,6 +23,12 @@ class SignIn : AppCompatActivity() {
         bindingClass.gotologin.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, LogIn::class.java))
         })
+        bindingClass.signInWithGoogle.setOnClickListener(View.OnClickListener {
+            Toast.makeText(this, "Implementing soon...", Toast.LENGTH_SHORT).show()
+        })
+        bindingClass.signInWithFaceBook.setOnClickListener(View.OnClickListener {
+            Toast.makeText(this, "Implementing soon...", Toast.LENGTH_SHORT).show()
+        })
         firebaseAuth = FirebaseAuth.getInstance()
         bindingClass.signup.setOnClickListener(View.OnClickListener {
             val email = bindingClass.signupemail.text.toString().trim()
@@ -34,14 +40,16 @@ class SignIn : AppCompatActivity() {
                 bindingClass.signuppassword.error = "password should greater than 7 digit"
             }
             else{
+                bindingClass.progressBar.visibility = View.VISIBLE
                 firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(
                     OnCompleteListener { task ->
                         Log.d("Tag", "Work")
                         if (task.isSuccessful){
-                            Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Verify your email in spam",Toast.LENGTH_SHORT).show()
                             sendEmailVerification()
                         }
                         else{
+                            bindingClass.progressBar.visibility = View.INVISIBLE
                             Toast.makeText(this, "Fail to register", Toast.LENGTH_SHORT).show()
                         }
                     })
@@ -55,11 +63,12 @@ class SignIn : AppCompatActivity() {
         firebaseUser?.sendEmailVerification()?.addOnCompleteListener(OnCompleteListener {
                 task ->
             if (task.isSuccessful){
-                Toast.makeText(this, "Verify your email in spam",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
                 firebaseAuth.signOut()
                 finish()
                 startActivity(Intent(this, LogIn::class.java))
             }else{
+                bindingClass.progressBar.visibility = View.INVISIBLE
                 Toast.makeText(this, "Failed to send verification email", Toast.LENGTH_SHORT).show()
             }
         })
