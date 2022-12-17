@@ -8,14 +8,18 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.chatapp.R
+import com.example.chatapp.User
 import com.example.chatapp.databinding.ActivitySignInBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class SignIn : AppCompatActivity() {
     private lateinit var bindingClass : ActivitySignInBinding
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var realTimeDataBase : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingClass = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
@@ -31,6 +35,7 @@ class SignIn : AppCompatActivity() {
         })
         firebaseAuth = FirebaseAuth.getInstance()
         bindingClass.signup.setOnClickListener(View.OnClickListener {
+            val name = bindingClass.UserName.text.toString().trim()
             val email = bindingClass.signupemail.text.toString().trim()
             val password = bindingClass.signuppassword.text.toString().trim()
             if (email.isEmpty()){
@@ -47,6 +52,7 @@ class SignIn : AppCompatActivity() {
                         if (task.isSuccessful){
                             Toast.makeText(this, "Verify your email in spam",Toast.LENGTH_SHORT).show()
                             sendEmailVerification()
+                            addUserToDatabase(name, email, firebaseAuth.currentUser?.uid)
                         }
                         else{
                             bindingClass.progressBar.visibility = View.INVISIBLE
@@ -56,6 +62,13 @@ class SignIn : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun addUserToDatabase(name: String, email: String, uid: String?) {
+        realTimeDataBase = FirebaseDatabase.getInstance().reference
+        if (uid != null) {
+            realTimeDataBase.child("user").child(uid).setValue(User(name, email, uid))
+        }
     }
 
     private fun sendEmailVerification() {

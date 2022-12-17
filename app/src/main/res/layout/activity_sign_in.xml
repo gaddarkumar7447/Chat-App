@@ -40,6 +40,39 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/UserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="Name"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:paddingLeft="17dp"
+                    android:layout_marginLeft="17dp"
+                    android:paddingBottom="15dp"
+                    android:textCursorDrawable="@drawable/corser_color"
+                    android:textSize="15sp"
+                    android:paddingTop="15dp" />
+
+                <ImageView
+                    android:layout_width="18.7dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="17.3dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_below="@+id/fragment"
+                android:layout_marginTop="12.7dp"
+                android:background="@drawable/blue_boarder_rounded"
+                android:layout_height="wrap_content">
+
+                <EditText
                     android:id="@+id/signupemail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

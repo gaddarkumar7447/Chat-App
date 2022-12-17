@@ -8,6 +8,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.chatapp.ChatActivity.Chat
+import com.example.chatapp.MainActivity
 import com.example.chatapp.R
 import com.example.chatapp.databinding.ActivityLogInBinding
 import com.google.android.gms.tasks.OnCompleteListener
@@ -31,7 +32,7 @@ class LogIn : AppCompatActivity() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser != null) {
             finish()
-            startActivity(Intent(this, Chat::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
         dataBinding.login.setOnClickListener(View.OnClickListener {
             val email = dataBinding.loginemail.text.toString().trim()
@@ -63,7 +64,7 @@ class LogIn : AppCompatActivity() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser!!.isEmailVerified){
             Toast.makeText(this, "LogIn successful", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, Chat::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }else{
             dataBinding.progressbarinmainactivity.visibility = View.INVISIBLE

@@ -7,13 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Loading..."
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/recyclerView"
+        tools:listitem="@layout/user_layout"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>
