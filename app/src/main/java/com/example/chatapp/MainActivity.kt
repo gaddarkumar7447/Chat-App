@@ -16,7 +16,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.Objects
 
-
 class MainActivity : AppCompatActivity() {
     lateinit var userList : ArrayList<User>
     lateinit var adapter: UserAdapter
@@ -29,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         firebaseDatabase = FirebaseDatabase.getInstance().reference
         userList = ArrayList()
         adapter = UserAdapter(this, userList)
-
 
         val userRecyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         userRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -46,10 +44,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 adapter.notifyDataSetChanged()
             }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
+            override fun onCancelled(error: DatabaseError) {}
 
         })
 
