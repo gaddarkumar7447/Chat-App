@@ -44,7 +44,7 @@ class LogIn : AppCompatActivity() {
                 dataBinding.loginpassword.error = "Enter password"
             }
             else{
-                dataBinding.progressbarinmainactivity.visibility =View.VISIBLE
+                dataBinding.progressbarinmainactivity.visibility = View.VISIBLE
                     firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(OnCompleteListener { task ->
                         if (task.isSuccessful){
                             checkMainVerification()

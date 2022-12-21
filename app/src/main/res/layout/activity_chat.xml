@@ -3,15 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
+    <data> </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#f9f9f9"
         tools:context=".ChatActivity.Chat">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recyclerViewChat"
+            android:layout_height="wrap_content" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="3dp"
+            android:layout_alignParentBottom="true"
+            android:weightSum="100"
+            android:layout_height="40dp">
+
+            <EditText
+                android:layout_width="85dp"
+                android:hint="Type a message"
+                android:layout_weight="85"
+                android:background="@drawable/message_box_background"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:padding="10sp"
+                android:id="@+id/message_Write"
+                android:layout_marginLeft="5dp"
+                android:textColorHint="@color/black"
+                android:textStyle="bold"
+                android:layout_height="match_parent"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_weight="20"
+                android:id="@+id/send_Button"
+                android:layout_marginTop="9dp"
+                android:src="@drawable/ic_baseline_send_24"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
     </RelativeLayout>
 </layout>
