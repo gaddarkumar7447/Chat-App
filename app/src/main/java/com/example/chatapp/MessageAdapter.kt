@@ -8,16 +8,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 
-class MessageAdapter(val context: Context, val messageList : ArrayList<Message>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MessageAdapter(val context: Context, private val messageList : ArrayList<Message>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val ITEM_RECEIVE = 1
     private val ITEM_SEND = 2
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == 1){
+        return if (viewType == 1){
             val receive = LayoutInflater.from(context).inflate(R.layout.receive, parent, false)
-            return ReceiveViewHolder(receive)
+            ReceiveViewHolder(receive)
         }else{
             val send = LayoutInflater.from(context).inflate(R.layout.send, parent, false)
-            return SendViewHolder(send)
+            SendViewHolder(send)
         }
     }
 
@@ -46,11 +46,11 @@ class MessageAdapter(val context: Context, val messageList : ArrayList<Message>)
     }
 
     class SendViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val sendMessage = itemView.findViewById<TextView>(R.id.messageSend)
+        val sendMessage: TextView = itemView.findViewById(R.id.messageSend)
     }
 
     class ReceiveViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val receiveMessage = itemView.findViewById<TextView>(R.id.messageReceive)
+        val receiveMessage: TextView = itemView.findViewById(R.id.messageReceive)
     }
 
 }

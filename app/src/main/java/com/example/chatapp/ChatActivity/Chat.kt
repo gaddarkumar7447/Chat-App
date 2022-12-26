@@ -64,7 +64,6 @@ class Chat : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {}
-
         })
 
     }
